@@ -1,0 +1,27 @@
+﻿<Window x:Class="MailSender.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MailSender"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600
+        " Width="800">
+    <Grid>
+        <TextBox x:Name="tFrom" HorizontalAlignment="Left" Height="23" Margin="165,33,0,0" TextWrapping="Wrap" Text="@yandex.ru" VerticalAlignment="Top" Width="580" />
+        <Grid>
+            <TextBox x:Name="tTo" HorizontalAlignment="Left" Height="23" Margin="163,75,0,0" TextWrapping="Wrap" Text="@yandex.ru" VerticalAlignment="Top" Width="583"/>
+            <TextBox x:Name="tBody" HorizontalAlignment="Left" Height="203" Margin="43,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="703" Text="Это сообщение отправлено с помощью слепленной на коленке программы."/>
+            <Button Content="Send" HorizontalAlignment="Left" Margin="72,438,0,0" VerticalAlignment="Top" Width="123" Click="Button_Click_1"/>
+            <Button Content="Test" HorizontalAlignment="Left" Margin="337,438,0,0" VerticalAlignment="Top" Width="123"/>
+            <Button Content="Cancel" HorizontalAlignment="Left" Margin="607,438,0,0" VerticalAlignment="Top" Width="123" Click="Button_Click"/>
+            <TextBox x:Name="tSubject" HorizontalAlignment="Left" Height="23" Margin="163,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="583"/>
+            <TextBox x:Name="Username" HorizontalAlignment="Left" Height="23" Margin="43,163,0,0" TextWrapping="Wrap" Text="test.send207@gmail.com" VerticalAlignment="Top" Width="234"/>
+            <TextBox x:Name="tPort" HorizontalAlignment="Left" Height="23" Margin="584,163,0,0" TextWrapping="Wrap" Text="587" VerticalAlignment="Top" Width="162"/>
+            <PasswordBox x:Name="tPassword" HorizontalAlignment="Left" Margin="317,163,0,0" VerticalAlignment="Top" Width="221" Height="23" Password="Trustno1*"/>
+            <Label Content="From" HorizontalAlignment="Left" Margin="43,32,0,0" VerticalAlignment="Top" Width="120"/>
+            <Label Content="To" HorizontalAlignment="Left" Margin="43,75,0,0" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Subject" HorizontalAlignment="Left" Margin="43,117,0,0" VerticalAlignment="Top" Width="120"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,15 @@
+G:\УЧЁБА\C#3\MailSender\MailSender\MailSender\bin\Debug\MailSender.exe.config
+G:\УЧЁБА\C#3\MailSender\MailSender\MailSender\bin\Debug\MailSender.exe
+G:\УЧЁБА\C#3\MailSender\MailSender\MailSender\bin\Debug\MailSender.pdb
+G:\УЧЁБА\C#3\MailSender\MailSender\MailSender\obj\Debug\MailSender.csprojAssemblyReference.cache
+G:\УЧЁБА\C#3\MailSender\MailSender\MailSender\obj\Debug\MainWindow.g.cs
+G:\УЧЁБА\C#3\MailSender\MailSender\MailSender\obj\Debug\App.g.cs
+G:\УЧЁБА\C#3\MailSender\MailSender\MailSender\obj\Debug\MailSender_MarkupCompile.cache
+G:\УЧЁБА\C#3\MailSender\MailSender\MailSender\obj\Debug\MailSender_MarkupCompile.lref
+G:\УЧЁБА\C#3\MailSender\MailSender\MailSender\obj\Debug\MainWindow.baml
+G:\УЧЁБА\C#3\MailSender\MailSender\MailSender\obj\Debug\MailSender.g.resources
+G:\УЧЁБА\C#3\MailSender\MailSender\MailSender\obj\Debug\MailSender.Properties.Resources.resources
+G:\УЧЁБА\C#3\MailSender\MailSender\MailSender\obj\Debug\MailSender.csproj.GenerateResource.cache
+G:\УЧЁБА\C#3\MailSender\MailSender\MailSender\obj\Debug\MailSender.csproj.CoreCompileInputs.cache
+G:\УЧЁБА\C#3\MailSender\MailSender\MailSender\obj\Debug\MailSender.exe
+G:\УЧЁБА\C#3\MailSender\MailSender\MailSender\obj\Debug\MailSender.pdb
