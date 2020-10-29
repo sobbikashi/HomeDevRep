@@ -5,25 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600
-        " Width="800">
+        Title="MainWindow" Height="768" Width="1024">
     <Grid>
-        <TextBox x:Name="tFrom" HorizontalAlignment="Left" Height="23" Margin="165,33,0,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=tUsername}" VerticalAlignment="Top" Width="580" />
-        <Grid>
-            <TextBox x:Name="tTo" HorizontalAlignment="Left" Height="23" Margin="163,75,0,0" TextWrapping="Wrap" Text="@yandex.ru" VerticalAlignment="Top" Width="583"/>
-            <TextBox x:Name="tBody" HorizontalAlignment="Left" Height="203" Margin="43,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="703" Text="Это сообщение отправлено с помощью слепленной на коленке программы."/>
-            <Button x:Name="btnSend" Content="Send" HorizontalAlignment="Left" Margin="43,502,0,0" VerticalAlignment="Top" Width="185" Click="Button_Click_1"/>
-            <Button x:Name="btnAddSignature" Content="Добавить подпись" HorizontalAlignment="Left" Margin="260,502,0,0" VerticalAlignment="Top" Width="278" Click="Button_Click_2"/>
-            <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="584,502,0,0" VerticalAlignment="Top" Width="162" Click="Button_Click"/>
-            <TextBox x:Name="tSubject" HorizontalAlignment="Left" Height="23" Margin="163,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="583"/>
-            <TextBox x:Name="tUsername" HorizontalAlignment="Left" Height="23" Margin="43,163,0,0" TextWrapping="Wrap" Text="test.send207@gmail.com" VerticalAlignment="Top" Width="234"/>
-            <TextBox x:Name="tPort" HorizontalAlignment="Left" Height="23" Margin="584,163,0,0" TextWrapping="Wrap" Text="587" VerticalAlignment="Top" Width="162"/>
-            <PasswordBox x:Name="tPassword" HorizontalAlignment="Left" Margin="317,163,0,0" VerticalAlignment="Top" Width="221" Height="23" Password="Trustno1*"/>
-            <Label x:Name="lFrom" Content="From" HorizontalAlignment="Left" Margin="43,32,0,0" VerticalAlignment="Top" Width="120"/>
-            <Label x:Name="lTo" Content="To" HorizontalAlignment="Left" Margin="43,75,0,0" VerticalAlignment="Top" Width="120"/>
-            <Label x:Name="lSubject" Content="Subject" HorizontalAlignment="Left" Margin="43,117,0,0" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="tSignature" HorizontalAlignment="Left" Height="23" Margin="484,451,0,0" TextWrapping="Wrap" Text="С уважением, Константин." VerticalAlignment="Top" Width="262"/>
-            <Label x:Name="lSignature" Content="Подпись" HorizontalAlignment="Left" Margin="339,451,0,0" VerticalAlignment="Top" Width="95" AutomationProperties.IsColumnHeader="True"/>
-        </Grid>
+        <TabControl HorizontalAlignment="Left" Height="737" VerticalAlignment="Top" Width="1016">
+            <TabItem Header="Письмо">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="66*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="14*"/>
+                        <ColumnDefinition Width="64*"/>
+                        <ColumnDefinition Width="851*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="lFrom" Content="От кого" HorizontalAlignment="Left" Margin="23,28,0,0" VerticalAlignment="Top" Width="167" Grid.ColumnSpan="5"/>
+                    <Label x:Name="lTo" Content="Кому" HorizontalAlignment="Left" Margin="23,80,0,0" VerticalAlignment="Top" Width="167" Grid.ColumnSpan="5"/>
+                    <Label x:Name="lSubject" Content="Тема письма" HorizontalAlignment="Left" Margin="23,129,0,0" VerticalAlignment="Top" Width="167" Grid.ColumnSpan="5"/>
+                    <TextBox x:Name="tFrom" HorizontalAlignment="Left" Height="23" Margin="71,28,0,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=tUsername}" VerticalAlignment="Top" Width="726" Grid.Column="4"/>
+                    <TextBox x:Name="tTo" HorizontalAlignment="Left" Height="23" Margin="71,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="726" Grid.Column="4"/>
+                    <TextBox x:Name="tSubject" HorizontalAlignment="Left" Height="23" Margin="71,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="726" Grid.Column="4"/>
+                    <TextBox x:Name="tBody" HorizontalAlignment="Left" Height="250" Margin="23,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="933" Grid.ColumnSpan="5" Text="Тело письма"/>
+                    <TextBox x:Name="tSignature" HorizontalAlignment="Left" Height="23" Margin="71,467,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="726" Grid.Column="4" Text="С уважением, Константин."/>
+                    <Label x:Name="lSignature" Content="Подпись" HorizontalAlignment="Left" Margin="23,464,0,0" VerticalAlignment="Top" Width="167" Grid.ColumnSpan="5"/>
+                    <Button x:Name="btnSend" HorizontalAlignment="Left" Margin="23,539,0,0" VerticalAlignment="Top" Width="167" Height="84" Content="Отправить" Grid.ColumnSpan="5" Click="btnSend_Click"/>
+                    <Button x:Name="btnCancel" Content="Отмена" HorizontalAlignment="Left" Margin="630,539,0,0" VerticalAlignment="Top" Width="167" Height="84" Grid.Column="4" Click="btnCancel_Click"/>
+                    <Button x:Name="btnAddSignature" Content="Добавить подпись" HorizontalAlignment="Left" VerticalAlignment="Top" Width="167" Height="84" Margin="264,539,0,0" Grid.Column="4" Click="btnAddSignature_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Настройки">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="977*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="lUsername" Content="Имя пользователя" HorizontalAlignment="Left" Margin="27,52,0,0" VerticalAlignment="Top" Width="114" Grid.ColumnSpan="2"/>
+                    <Label x:Name="lPassword" Content="Пароль" HorizontalAlignment="Left" Margin="27,104,0,0" VerticalAlignment="Top" Width="114" Grid.ColumnSpan="2"/>
+                    <Label x:Name="lPort" Content="Порт" HorizontalAlignment="Left" Margin="27,167,0,0" VerticalAlignment="Top" Width="114" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="tUsername" HorizontalAlignment="Left" Height="23" Margin="113,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="387" Grid.Column="1" Text="test.send207@gmail.com"/>
+                    <TextBox x:Name="tPort" HorizontalAlignment="Left" Height="23" Margin="113,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Grid.Column="1" Text="587"/>
+                    <PasswordBox x:Name="tPassword" HorizontalAlignment="Left" Margin="113,104,0,0" VerticalAlignment="Top" Width="387" Height="26" Grid.Column="1" Password="Trustno1*"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Планировщик">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </Window>

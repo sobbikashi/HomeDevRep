@@ -1,20 +1,20 @@
 ﻿MailSender
 
 
-exe
+winexe
 C#
 .cs
-D:\DevRep\MailSender\MailSender\obj\Debug\
+G:\УЧЁБА\Tabs\MailSender\MailSender\obj\Debug\
 MailSender
 none
 false
 DEBUG;TRACE
-D:\DevRep\MailSender\MailSender\App.xaml
+G:\УЧЁБА\Tabs\MailSender\MailSender\App.xaml
 11151548125
 
 7453118650
-21-2080992045
+131254293103
 MainWindow.xaml;
 
-True
+False
 

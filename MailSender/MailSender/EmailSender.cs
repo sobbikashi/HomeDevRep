@@ -1,47 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using System.Diagnostics;
+using System.Net.Mail;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
 
 namespace MailSender.Model
 {
-    //public struct ELetter
-    //{
-    //    public string addressFrom;
-    //    public string addressTo;
-    //    public string subject;
-    //    public string textBody;
-    //}
-    
-
     class EmailSender
     {
-
-
-        //public string addressFrom;
-        //public string addressTo;
-        //public string subject;
-        //public string textBody;
-
-
         public void Send(MailMessage message, string password)
         {
-           
+
             try
             {
                 string subject = message.Subject;
                 string body = message.Body;
                 var smtp = new SmtpClient()
                 {
-                    
+
                     Host = "smtp.gmail.com",
                     Port = 587,
                     EnableSsl = true,
