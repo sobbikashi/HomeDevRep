@@ -53,7 +53,7 @@ namespace MailSender
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            tBody.Text += "\n " + tSignature.Text;
+            tBody.Text += "\n \n \n  " + tSignature.Text;
         }
     }
 }
