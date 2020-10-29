@@ -39,11 +39,21 @@ namespace MailSender
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Model.EmailSender emailSender = new Model.EmailSender();
-            MailMessage mail = new MailMessage();
-            //MailAddress from = new MailAddress(tFrom.Text);
-            //MailAddress to = new MailAddress(tTo.Text);
+            EmailSender emailSender = new EmailSender();
+            
+            MailAddress from = new MailAddress(tFrom.Text);
+            MailAddress to = new MailAddress(tTo.Text);
+            MailMessage mail = new MailMessage(from, to);
+            mail.Subject = tSubject.Text;
+            mail.Body = tBody.Text;
+
             emailSender.Send(mail, tPassword.Password);
+            
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            tBody.Text += "\n " + tSignature.Text;
         }
     }
 }

@@ -8,14 +8,33 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace MailSender.Model
 {
+    //public struct ELetter
+    //{
+    //    public string addressFrom;
+    //    public string addressTo;
+    //    public string subject;
+    //    public string textBody;
+    //}
+    
+
     class EmailSender
     {
-        //string addressFrom = new 
+
+
+        //public string addressFrom;
+        //public string addressTo;
+        //public string subject;
+        //public string textBody;
+
+
         public void Send(MailMessage message, string password)
         {
+           
             try
             {
                 string subject = message.Subject;
@@ -31,7 +50,8 @@ namespace MailSender.Model
                     UseDefaultCredentials = false,
                     Credentials = new NetworkCredential("test.send207@gmail.com", password)
                 };
-                smtp.Send("test.send207@gmail.com", "test.get207@yandex.ru", " ", "Это сообщение отправлено с помощью слепленной на коленке программы");
+                // smtp.Send(addressFrom, addressTo, subject, textBody);
+                smtp.Send(message);
                 Debug.WriteLine("Message has sent");
                 MessageBox.Show("The Message has beed sent");
             }
