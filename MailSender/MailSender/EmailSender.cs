@@ -8,27 +8,36 @@ using System.Diagnostics;
 using System.Net.Mail;
 using System.Windows;
 
+
 namespace MailSender.Model
 {
     class EmailSender
     {
         public void Send(MailMessage message, string password)
         {
+            StaticVar gMail = new StaticVar();
+            gMail.host = "smtp.gmail.com";
+            gMail.port = 587;
+            gMail.pass = "Trustno1*";
+            gMail.obj = "test.send207@gmail.com";
+
+
 
             try
             {
                 string subject = message.Subject;
                 string body = message.Body;
                 var smtp = new SmtpClient()
+
                 {
 
-                    Host = "smtp.gmail.com",
-                    Port = 587,
+                    Host = gMail.host,
+                    Port = gMail.port,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     DeliveryFormat = SmtpDeliveryFormat.International,
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential("test.send207@gmail.com", password)
+                    Credentials = new NetworkCredential(gMail.obj, gMail.pass)
                 };
                 // smtp.Send(addressFrom, addressTo, subject, textBody);
                 smtp.Send(message);

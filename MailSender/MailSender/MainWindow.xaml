@@ -48,6 +48,9 @@
             <TabItem Header="Планировщик">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
+            <TabItem Header="Список рассылки">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
         </TabControl>
 
     </Grid>
