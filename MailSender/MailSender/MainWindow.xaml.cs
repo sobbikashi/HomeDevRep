@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.Mail;
 using MailSender.Model;
+using System.Text.RegularExpressions;
 
 namespace MailSender
 {
@@ -26,13 +27,10 @@ namespace MailSender
         {
             InitializeComponent();
         }
-
-            
-              
                 
-
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
+
             EmailSender emailSender = new EmailSender();
 
             MailAddress from = new MailAddress(tFrom.Text);

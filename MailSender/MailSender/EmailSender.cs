@@ -15,11 +15,7 @@ namespace MailSender.Model
     {
         public void Send(MailMessage message, string password)
         {
-            StaticVar gMail = new StaticVar();
-            gMail.host = "smtp.gmail.com";
-            gMail.port = 587;
-            gMail.pass = "Trustno1*";
-            gMail.obj = "test.send207@gmail.com";
+            
 
 
 
@@ -31,13 +27,13 @@ namespace MailSender.Model
 
                 {
 
-                    Host = gMail.host,
-                    Port = gMail.port,
+                    Host = configSmtp.host,
+                    Port = configSmtp.port,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     DeliveryFormat = SmtpDeliveryFormat.International,
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential(gMail.obj, gMail.pass)
+                    Credentials = new NetworkCredential(configSmtp.obj, configSmtp.pass)
                 };
                 // smtp.Send(addressFrom, addressTo, subject, textBody);
                 smtp.Send(message);
