@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Net.Mail;
 using MailSender.Model;
 using System.Text.RegularExpressions;
+using System.Media;
 
 namespace MailSender
 {
@@ -30,16 +31,26 @@ namespace MailSender
                 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
+            if (RegexCheck.IsValidEmail(tTo.Text) == true)
+            {
+                EmailSender emailSender = new EmailSender();
 
-            EmailSender emailSender = new EmailSender();
+                MailAddress from = new MailAddress(tFrom.Text);
+                MailAddress to = new MailAddress(tTo.Text);
+                MailMessage mail = new MailMessage(from, to);
+                mail.Subject = tSubject.Text;
+                mail.Body = tBody.Text;
 
-            MailAddress from = new MailAddress(tFrom.Text);
-            MailAddress to = new MailAddress(tTo.Text);
-            MailMessage mail = new MailMessage(from, to);
-            mail.Subject = tSubject.Text;
-            mail.Body = tBody.Text;
-
-            emailSender.Send(mail, tPassword.Password);
+                emailSender.Send(mail, tPassword.Password);
+            }
+            else
+            {
+                System.Media.SystemSounds.Exclamation.Play();
+                //MessageBox.Show("Введён недопустимый адрес получателя ");
+                lWarningIncEmail.Visibility = Visibility.Visible;
+              
+            }
+            
         }
 
         private void btnAddSignature_Click(object sender, RoutedEventArgs e)
@@ -51,5 +62,7 @@ namespace MailSender
         {
             Close();
         }
+
+        
     }
 }
