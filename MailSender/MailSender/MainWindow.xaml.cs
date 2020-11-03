@@ -35,13 +35,14 @@ namespace MailSender
             {
                 EmailSender emailSender = new EmailSender();
 
-                MailAddress from = new MailAddress(tFrom.Text);
+                MailAddress from = new MailAddress(tFrom.Text + tcbServer.Text);
                 MailAddress to = new MailAddress(tTo.Text);
                 MailMessage mail = new MailMessage(from, to);
                 mail.Subject = tSubject.Text;
                 mail.Body = tBody.Text;
 
                 emailSender.Send(mail, tPassword.Password);
+                lWarningIncEmail.Visibility = Visibility.Hidden;
             }
             else
             {
