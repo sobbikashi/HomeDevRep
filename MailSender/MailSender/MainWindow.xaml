@@ -19,7 +19,7 @@
                         <ColumnDefinition Width="13*"/>
                         <ColumnDefinition Width="740*"/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="lFrom" Content="От кого" HorizontalAlignment="Left" Margin="23,28,0,0" VerticalAlignment="Top" Width="167" Grid.ColumnSpan="5"/>
+                    <Label x:Name="lFrom" Content="B" HorizontalAlignment="Left" Margin="23,28,0,0" VerticalAlignment="Top" Width="167" Grid.ColumnSpan="5"/>
                     <Label x:Name="lTo" Content="Кому" HorizontalAlignment="Left" Margin="23,80,0,0" VerticalAlignment="Top" Width="167" Grid.ColumnSpan="5"/>
                     <Label x:Name="lSubject" Content="Тема письма" HorizontalAlignment="Left" Margin="23,129,0,0" VerticalAlignment="Top" Width="167" Grid.ColumnSpan="5"/>
                     <TextBox x:Name="tFrom" HorizontalAlignment="Left" Height="23" Margin="71,28,0,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=tUsername}" VerticalAlignment="Top" Width="332" Grid.Column="4" Grid.ColumnSpan="3"/>
@@ -33,24 +33,25 @@
                     <Button x:Name="btnAddSignature" Content="Добавить подпись" HorizontalAlignment="Left" VerticalAlignment="Top" Width="167" Height="84" Margin="152.5,539,0,0" Grid.Column="6" Click="btnAddSignature_Click"/>
                     <Label x:Name="lWarningIncEmail" Content="Введён некорректный адрес получателя" Grid.Column="6" HorizontalAlignment="Left" Margin="319.5,103,0,0" VerticalAlignment="Top" Width="366" Visibility="Hidden" Foreground="Red" />
                     <Image Grid.Column="6" HorizontalAlignment="Left" Height="100" Margin="709,184,-70,0" VerticalAlignment="Top" Width="100"/>
-                    <ComboBox x:Name="tcbServer" Grid.Column="6" HorizontalAlignment="Left" Margin="319,28,0,0" VerticalAlignment="Top" Width="366">
-                        <TextBlock>@gmail.com</TextBlock>
-                        <TextBlock>@yandex.ru</TextBlock>
+                    <ComboBox x:Name="tcbServer" Grid.Column="6" HorizontalAlignment="Left" Margin="319,28,0,0" VerticalAlignment="Top" Width="366" SelectionChanged="tcbServer_SelectionChanged">
+                        <ComboBoxItem Content="@gmail.com" HorizontalAlignment="Left" Width="364"/>
+                        <ComboBoxItem Content="@yandex.ru" HorizontalAlignment="Left" Width="364"/>
                     </ComboBox>
                 </Grid>
             </TabItem>
             <TabItem Header="Настройки">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="16*"/>
+                        <ColumnDefinition Width="18*"/>
                         <ColumnDefinition Width="977*"/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="lUsername" Content="Имя пользователя" HorizontalAlignment="Left" Margin="27,52,0,0" VerticalAlignment="Top" Width="114" Grid.ColumnSpan="2"/>
-                    <Label x:Name="lPassword" Content="Пароль" HorizontalAlignment="Left" Margin="27,104,0,0" VerticalAlignment="Top" Width="114" Grid.ColumnSpan="2"/>
-                    <Label x:Name="lPort" Content="Порт" HorizontalAlignment="Left" Margin="27,167,0,0" VerticalAlignment="Top" Width="114" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="tUsername" HorizontalAlignment="Left" Height="23" Margin="113,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="387" Grid.Column="1" Text="test.send207@gmail.com"/>
-                    <TextBox x:Name="tPort" HorizontalAlignment="Left" Height="23" Margin="113,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Grid.Column="1" Text="587"/>
-                    <PasswordBox x:Name="tPassword" HorizontalAlignment="Left" Margin="113,104,0,0" VerticalAlignment="Top" Width="387" Height="26" Grid.Column="1" Password="Trustno1*"/>
+                    <Label x:Name="lUsername" Content="Имя пользователя" HorizontalAlignment="Left" Margin="11.5,52,0,0" VerticalAlignment="Top" Width="114" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <Label x:Name="lPassword" Content="Пароль" HorizontalAlignment="Left" Margin="11.5,104,0,0" VerticalAlignment="Top" Width="114" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <Label x:Name="lPort" Content="Порт" HorizontalAlignment="Left" Margin="11.5,167,0,0" VerticalAlignment="Top" Width="114" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <TextBox x:Name="tUsername" HorizontalAlignment="Left" Height="23" Margin="113,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="387" Grid.Column="2" Text="test.send207@gmail.com"/>
+                    <TextBox x:Name="tPort" HorizontalAlignment="Left" Height="23" Margin="113,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Grid.Column="2" Text="587"/>
+                    <PasswordBox x:Name="tPassword" HorizontalAlignment="Left" Margin="113,104,0,0" VerticalAlignment="Top" Width="387" Height="26" Grid.Column="2" Password="Trustno1*"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Планировщик">

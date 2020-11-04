@@ -27,8 +27,13 @@ namespace MailSender
         public MainWindow()
         {
             InitializeComponent();
+           
         }
-                
+        public static string currentHost = "";
+        public static string currentPass = "";
+        public static string currentUsername = "";
+        public static int currentPort = 0;
+
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
             if (RegexCheck.IsValidEmail(tTo.Text) == true)
@@ -41,13 +46,12 @@ namespace MailSender
                 mail.Subject = tSubject.Text;
                 mail.Body = tBody.Text;
 
-                emailSender.Send(mail, tPassword.Password);
+                emailSender.Send(mail, currentPass);
                 lWarningIncEmail.Visibility = Visibility.Hidden;
             }
             else
             {
-                System.Media.SystemSounds.Exclamation.Play();
-                //MessageBox.Show("Введён недопустимый адрес получателя ");
+                SystemSounds.Exclamation.Play();
                 lWarningIncEmail.Visibility = Visibility.Visible;
               
             }
@@ -64,6 +68,25 @@ namespace MailSender
             Close();
         }
 
-        
+        private void tcbServer_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            ComboBoxItem selectedItem = (ComboBoxItem)comboBox.SelectedItem;
+             if (selectedItem.Content.ToString() == "@gmail.com")
+            {
+                currentHost = ConfigSmtpGMail.host;
+                currentPort = ConfigSmtpGMail.port;
+                currentUsername = ConfigSmtpGMail.obj;
+                currentPass = ConfigSmtpGMail.pass;
+            }
+            else if (selectedItem.Content.ToString() == "@yandex.ru")
+            {
+                currentHost = ConfigSmtpYandex.host;
+                currentPort = ConfigSmtpYandex.port;
+                currentUsername = ConfigSmtpYandex.obj;
+                currentPass = ConfigSmtpYandex.pass;
+            }
+
+        }
     }
 }

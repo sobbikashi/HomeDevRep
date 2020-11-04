@@ -1,7 +1,7 @@
 ﻿MailSender
 
 
-winexe
+exe
 C#
 .cs
 D:\DevRep\MailSender\MailSender\obj\Debug\
@@ -12,7 +12,7 @@ DEBUG;TRACE
 D:\DevRep\MailSender\MailSender\App.xaml
 11151548125
 
-81902756677
+8633034660
 131254293103
 MainWindow.xaml;
 
