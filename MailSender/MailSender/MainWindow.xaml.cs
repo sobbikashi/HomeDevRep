@@ -17,17 +17,13 @@ namespace MailSender
         {
             InitializeComponent();
            
-        }
-        public static string currentHost = "";
-        public static string currentPass = "";
-        public static string currentUsername = "";
-        public static int currentPort = 0;
-
+        }       
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            if (RegexCheck.IsValidEmail(tTo.Text) == true)
+            if (RegexCheck.IsValidEmail(tTo.Text))
             {
-                EmailSender emailSender = new EmailSender();
+                var smtpParams = GetSmtpParams();
+                EmailSender emailSender = new EmailSender(smtpParams.host, smtpParams.pass, smtpParams.port, smtpParams.user);
 
                 MailAddress from = new MailAddress(tFrom.Text + tcbServer.Text);
                 MailAddress to = new MailAddress(tTo.Text);
@@ -35,65 +31,58 @@ namespace MailSender
                 mail.Subject = tSubject.Text;
                 mail.Body = tBody.Text;
 
-                emailSender.Send(mail, currentPass);
+                emailSender.Send(mail);
                 lWarningIncEmail.Visibility = Visibility.Hidden;
             }
             else
             {
                 SystemSounds.Exclamation.Play();
-                lWarningIncEmail.Visibility = Visibility.Visible;
-              
+                lWarningIncEmail.Visibility = Visibility.Visible;              
             }
             
         }
-
         private void btnAddSignature_Click(object sender, RoutedEventArgs e)
         {
-            tBody.Text += "\n \n \n  " + tSignature.Text;
+            tBody.Text += "\n \n \n  " + tSignature.Text;                    
+           
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
-
-        private void tcbServer_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBox comboBox = (ComboBox)sender;
-            ComboBoxItem selectedItem = (ComboBoxItem)comboBox.SelectedItem;
-             if (selectedItem.Content.ToString() == "@gmail.com")
-            {
-                currentHost = ConfigSmtpGMail.host;
-                currentPort = ConfigSmtpGMail.port;
-                currentUsername = ConfigSmtpGMail.obj;
-                currentPass = ConfigSmtpGMail.pass;
-            }
-            else if (selectedItem.Content.ToString() == "@yandex.ru")
-            {
-                currentHost = ConfigSmtpYandex.host;
-                currentPort = ConfigSmtpYandex.port;
-                currentUsername = ConfigSmtpYandex.obj;
-                currentPass = ConfigSmtpYandex.pass;
-            }
-
-        }
-
+                
         private void btnNext_Click(object sender, RoutedEventArgs e)
         { 
-            if (this.tcMain.SelectedIndex != 3)
+            if (tcMain.SelectedIndex != tcMain.Items.Count-1)
             {
-                this.tcMain.SelectedIndex += 1;
+                tcMain.SelectedIndex += 1;
             }               
-            else this.tcMain.SelectedIndex = 0;
+            else tcMain.SelectedIndex = 0;
         }
 
         private void btnPrev_Click(object sender, RoutedEventArgs e)
         {
-            if (this.tcMain.SelectedIndex != 0)
+            if (tcMain.SelectedIndex != 0)
             {
-                this.tcMain.SelectedIndex -= 1;
+                tcMain.SelectedIndex -= 1;
             }               
-            else this.tcMain.SelectedIndex = 3;
+            else tcMain.SelectedIndex = tcMain.Items.Count-1;
+        }
+       
+        private (string host, string pass, int port, string user) GetSmtpParams()
+        {
+            ComboBox comboBox = (ComboBox)tcbServer;
+            ComboBoxItem selectedItem = (ComboBoxItem)comboBox.SelectedItem;
+          
+            switch (selectedItem.Content.ToString())
+            {
+                case "@gmail.com":
+                    return (ConfigSmtpGMail.host, ConfigSmtpGMail.pass, ConfigSmtpGMail.port, ConfigSmtpGMail.user);                   
+                case "@yandex.ru": 
+                    return (ConfigSmtpYandex.host, ConfigSmtpYandex.pass, ConfigSmtpYandex.port, ConfigSmtpYandex.user);                   
+            }
+            return (null, null, 0, null);
         }
     }
 }

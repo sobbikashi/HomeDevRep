@@ -1,40 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net;
 using System.Diagnostics;
 using System.Net.Mail;
 using System.Windows;
 
 
-
 namespace MailSender.Model
 {
-    class EmailSender
+    public class EmailSender
     {
-        public void Send(MailMessage message, string password)
-        {
+        private string _host;
+        private string _pass;
+        private int _port;
+        private string _user;
 
+        public EmailSender(string host, string pass, int port, string user)
+        {
+            _host = host;
+            _pass = pass;
+            _port = port;
+            _user = user;
+        }
+        public void Send(MailMessage message)
+        {
             try
             {
                 string subject = message.Subject;
                 string body = message.Body;
 
                 var smtp = new SmtpClient()
-
                 {
-
-                    Host = MainWindow.currentHost,
-                    Port = MainWindow.currentPort,
+                    Host = _host,
+                    Port = _port,                    
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     DeliveryFormat = SmtpDeliveryFormat.International,
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential(MainWindow.currentUsername, MainWindow.currentPass)
+                    Credentials = new NetworkCredential(_user, _pass)
                 };
-
                 smtp.Send(message);
                 Debug.WriteLine("Message has sent");
                 MessageBox.Show("The Message has beed sent");
