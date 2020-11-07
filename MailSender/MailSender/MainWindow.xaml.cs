@@ -88,5 +88,15 @@ namespace MailSender
             }
 
         }
+
+        private void btnNext_Click(object sender, RoutedEventArgs e)
+        {
+            this.tcMain.SelectedIndex = 1;
+        }
+
+        private void btnPrev_Click(object sender, RoutedEventArgs e)
+        {
+            this.tcMain.SelectedIndex = -1;
+        }
     }
 }
