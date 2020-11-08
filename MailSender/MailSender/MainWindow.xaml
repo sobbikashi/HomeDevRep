@@ -99,7 +99,7 @@
                     <Button x:Name="btnSendM" HorizontalAlignment="Left" Margin="11,595,0,0" VerticalAlignment="Top" Width="166" Height="45" Content="Отправить рассылку" Grid.ColumnSpan="6" Grid.Column="1" Click="btnSendM_Click"/>
                     <Button x:Name="btnCancelM" Content="Отмена" HorizontalAlignment="Left" Margin="476,594,0,0" VerticalAlignment="Top" Width="166" Height="46" Grid.Column="10" Click="btnCancel_Click"/>
                     <Image Grid.Column="10" HorizontalAlignment="Left" Height="100" Margin="667,184,-70,0" VerticalAlignment="Top" Width="100"/>
-                    <TextBox x:Name="tToSingleM" HorizontalAlignment="Left" Height="23" Margin="69,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="558" Grid.Column="6" Grid.ColumnSpan="5" Text="test.get207@yandex.ru" />
+                    <TextBox x:Name="tToSingleM" HorizontalAlignment="Left" Height="23" Margin="69,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="558" Grid.Column="6" Grid.ColumnSpan="5" />
                     <Button x:Name="btnAddM" Content="Добавить" Grid.Column="10" HorizontalAlignment="Left" Margin="520,170,0,0" VerticalAlignment="Top" Width="121" Click="btnAddM_Click" />
                     <Button x:Name="btnAddSignatureM" HorizontalAlignment="Left" Margin="99,594,0,0" VerticalAlignment="Top" Width="166" Height="45" Content="Добавить подпись"  Grid.Column="10" Click="btnAddSignatureM_Click"/>
                     <Label x:Name="lFromMname" Content="От кого" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="166" Grid.ColumnSpan="6" Grid.Column="1"/>

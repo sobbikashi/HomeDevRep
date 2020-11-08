@@ -62,7 +62,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="SMTPServers.cs" />
-    <Compile Include="RegexCheck.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -107,7 +106,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="icons\back.ico" />
   </ItemGroup>
@@ -119,6 +117,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icons\next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyRegexChecker\MyRegexChecker.csproj">
+      <Project>{6a6b9d1b-7af1-4e0b-9bca-9799209453fa}</Project>
+      <Name>MyRegexChecker</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
