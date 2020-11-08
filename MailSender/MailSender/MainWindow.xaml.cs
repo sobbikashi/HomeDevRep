@@ -6,13 +6,14 @@ using MailSender.Model;
 using System.Media;
 using System.Collections.Generic;
 using Microsoft.Win32;
+using MyRegexChecker;
 
 namespace MailSender
 {
-  
+
     public partial class MainWindow : Window
     {
-        static int countMail = 0;
+        public bool neetToShow = true;
         public List<string> addressList = new List<string>();
         public MainWindow()
         {
@@ -73,7 +74,6 @@ namespace MailSender
                 tcMain.SelectedIndex += 1;
             }
             else tcMain.SelectedIndex = 0;
-            tFromM.Text = tFrom.Text + tcbServer.Text;
         }
 
         private void btnPrev_Click(object sender, RoutedEventArgs e)
@@ -83,7 +83,6 @@ namespace MailSender
                 tcMain.SelectedIndex -= 1;
             }
             else tcMain.SelectedIndex = tcMain.Items.Count - 1;
-            tFromM.Text = tFrom.Text + tcbServer.Text;
         }
 
         // Получение параметров smtp из комбо-бокса
@@ -101,7 +100,7 @@ namespace MailSender
             }
             return (null, null, 0, null);
         }
-    
+
 
         // Добавление подписи к телу письма во вкладке "Рассылка"
         private void btnAddSignatureM_Click(object sender, RoutedEventArgs e)
@@ -113,35 +112,38 @@ namespace MailSender
         private void btnAddM_Click(object sender, RoutedEventArgs e)
         {
             tToM.Text += tToSingleM.Text + "; ";
-            countMail += 1;
             addressList.Add(tToSingleM.Text);
+            if (neetToShow)
+            {
+                tFromM.Text = tFrom.Text + tcbServer.Text;
+            }
+            neetToShow = false;
         }
 
         // Отправка писем по списку рассылки
         private void btnSendM_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < countMail; i++)
+            var smtpParams = GetSmtpParams();
+            EmailSender emailSender = new EmailSender(smtpParams.host, smtpParams.pass, smtpParams.port, smtpParams.user);
+            foreach (var item in addressList)
             {
-                var smtpParams = GetSmtpParams();
-                EmailSender emailSender = new EmailSender(smtpParams.host, smtpParams.pass, smtpParams.port, smtpParams.user);
                 MailAddress from = new MailAddress(tFrom.Text + tcbServer.Text);
-                MailAddress to = new MailAddress(addressList[i]);
+                MailAddress to = new MailAddress(item);
                 MailMessage mail = new MailMessage(from, to);
                 mail.Subject = tSubject.Text;
                 mail.Body = tBody.Text;
                 emailSender.Send(mail);
             }
-            countMail = 0;
         }
 
         // Добавление файла-вложения
         private void btnAttach_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileAddress = new OpenFileDialog();
+            fileAddress.DefaultExt = ".txt";
+            fileAddress.Filter = "Text documents (.txt)|*.txt";
             if (fileAddress.ShowDialog() == true)
             {
-                fileAddress.DefaultExt = ".txt";
-                fileAddress.Filter = "Text documents (.txt)|*.txt";
                 tbAttachmentAddress.Text = fileAddress.FileName;
             }
             btnAttachDelete.Visibility = Visibility.Visible;

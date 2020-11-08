@@ -1,10 +1,10 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace MailSender
+namespace MyRegexChecker
 {
-    class RegexCheck
+    public class RegexCheck
     {
-        // Метод проверки корректности введённого адреса получателя с использованием регулярных выражений
+        // Проверка корректности введённого адреса получателя с использованием регулярных выражений
         public static bool IsValidEmail(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
