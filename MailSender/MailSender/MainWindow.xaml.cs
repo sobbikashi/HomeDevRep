@@ -3,7 +3,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Net.Mail;
 using MailSender.Model;
-using System.Media;		
+using System.Media;
+using System.Collections.Generic;
 
 
 namespace MailSender
@@ -13,6 +14,8 @@ namespace MailSender
     /// </summary>
     public partial class MainWindow : Window
     {
+        static int countMail = 0;
+        public List<string> addressList = new List<string>();
         public MainWindow()
         {
             InitializeComponent();
@@ -83,6 +86,34 @@ namespace MailSender
                     return (ConfigSmtpYandex.host, ConfigSmtpYandex.pass, ConfigSmtpYandex.port, ConfigSmtpYandex.user);                   
             }
             return (null, null, 0, null);
+        }
+
+        private void btnAddSignatureM_Click(object sender, RoutedEventArgs e)
+        {
+            tBodyM.Text += "\n \n \n  " + tSignatureM.Text;
+        }
+
+        private void btnAddM_Click(object sender, RoutedEventArgs e)
+        {
+            tToM.Text += tToSingleM.Text + "; ";
+            countMail += 1;
+            addressList.Add(tToSingleM.Text);
+        }
+
+        private void btnSendM_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < countMail; i++)
+            {
+                var smtpParams = GetSmtpParams();
+                EmailSender emailSender = new EmailSender(smtpParams.host, smtpParams.pass, smtpParams.port, smtpParams.user);
+                MailAddress from = new MailAddress(tFrom.Text + tcbServer.Text);
+                MailAddress to = new MailAddress(addressList[i]);
+                MailMessage mail = new MailMessage(from, to);
+                mail.Subject = tSubject.Text;
+                mail.Body = tBody.Text;
+                emailSender.Send(mail);                
+            }
+            countMail = 0;
         }
     }
 }

@@ -38,8 +38,7 @@ namespace MailSender.Model
                     UseDefaultCredentials = false,
                     Credentials = new NetworkCredential(_user, _pass)
                 };
-                smtp.Send(message);
-                Debug.WriteLine("Message has sent");
+                smtp.Send(message);               
                 MessageBox.Show("The Message has beed sent");
             }
             catch (Exception ex)
