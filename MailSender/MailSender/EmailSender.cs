@@ -21,6 +21,8 @@ namespace MailSender.Model
             _port = port;
             _user = user;
         }
+
+        // Определение метода, отправляющего письмо
         public void Send(MailMessage message)
         {
             try

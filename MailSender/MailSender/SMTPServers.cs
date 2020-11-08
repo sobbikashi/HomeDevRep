@@ -1,6 +1,6 @@
 ﻿namespace MailSender
 {
-   
+    // Классы, отвечающие за параметры настроек авторизации исходящей почты
     public static class ConfigSmtpGMail
     {
         public static string host = "smtp.gmail.com";

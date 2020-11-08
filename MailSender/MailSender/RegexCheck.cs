@@ -4,6 +4,7 @@ namespace MailSender
 {
     class RegexCheck
     {
+        // Метод проверки корректности введённого адреса получателя с использованием регулярных выражений
         public static bool IsValidEmail(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
@@ -15,4 +16,3 @@ namespace MailSender
         }
     }
 }
-//RenderTransformOrigin="0.1,0.675"  660,707,0,0
